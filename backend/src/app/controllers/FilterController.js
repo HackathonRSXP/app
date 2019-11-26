@@ -22,7 +22,7 @@ class FilterController {
         category: 'T.I',
       },
       {
-        id: 4,
+        id: 6,
         category: 'Arquitetura',
       },
     ]);
