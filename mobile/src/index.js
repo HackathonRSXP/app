@@ -7,12 +7,12 @@ import App from './App';
 
 export default function Index() {
   return (
-    <View>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="rgba(0, 0, 0, 0.3)"
-      />
-      <App />
-    </View>
+    // <View>
+    //   <StatusBar
+    //     barStyle="light-content"
+    //     backgroundColor="rgba(0, 0, 0, 0.3)"
+    //   />
+    <App />
+    // </View>
   );
 }

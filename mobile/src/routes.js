@@ -1,19 +1,19 @@
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import SignIn from "./pages/SignIn";
-// import SignUp from './pages/SignUp';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
-import Profile from "./pages/Profile";
+// import Profile from './pages/Profile';
 
 export default (isSigned = false) =>
   createAppContainer(
     createSwitchNavigator(
       {
         Sign: createSwitchNavigator({
-          SignIn
-          // SignUp,
-        })
+          SignIn,
+          SignUp,
+        }),
         // App: createBottomTabNavigator(
         //   {
         //     Dashboard,
@@ -35,7 +35,8 @@ export default (isSigned = false) =>
         // ),
       },
       {
-        initialRouteName: isSigned ? "App" : "Sign"
+        initialRouteName: 'Sign',
+        // initialRouteName: isSigned ? "App" : "Sign"
       }
     )
   );
