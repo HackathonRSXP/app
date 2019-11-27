@@ -75,7 +75,7 @@ export default function Filters({ navigation }) {
               <Avatar
                 source={
                   category.id
-                    ? images[category.id]
+                    ? images[category.id - 1]
                     : `https://api.adorable.io/avatar/50/${category.category}.png`
                 }
               />
