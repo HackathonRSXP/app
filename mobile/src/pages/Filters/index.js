@@ -86,7 +86,7 @@ export default function Filters({ navigation }) {
 
         <SubmitButton
           onPress={() =>
-            navigation.navigate('Preview', { category: categoriesSelected })
+            navigation.navigate('Enterprises', { category: categoriesSelected })
           }
         >
           Já escolhi!

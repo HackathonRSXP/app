@@ -18,9 +18,9 @@ export default (isSigned = false) =>
         }),
         App: createSwitchNavigator(
           {
-            Enterprises,
-            Filters,
             Welcome,
+            Filters,
+            Enterprises,
             // Profile,
           }
           // {

@@ -7,7 +7,7 @@ import welcomeImage from '../../assets/welcome.png';
 export default function Welcome({ navigation }) {
   return (
     <Onboarding
-      onDone={() => navigation.navigate('SignIn')}
+      onDone={() => navigation.navigate('Filters')}
       pages={[
         {
           backgroundColor: '#fff',

@@ -57,8 +57,12 @@ export default function Enterprises({ navigation }) {
         <Avatar source={imageEnterprise} />
 
         <ContainerButtons>
-          <SubmitButton>Anterior</SubmitButton>
-          <SubmitButton>Próximo</SubmitButton>
+          <SubmitButton onPress={() => navigation.navigate('Welcome')}>
+            Anterior
+          </SubmitButton>
+          <SubmitButton onPress={() => navigation.navigate('Welcome')}>
+            Próximo
+          </SubmitButton>
         </ContainerButtons>
       </Container>
     </Background>
