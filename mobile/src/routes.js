@@ -7,6 +7,7 @@ import SignUp from './pages/SignUp';
 import Welcome from './pages/Welcome';
 import Filters from './pages/Filters';
 import Enterprises from './pages/Enterprises';
+import Preview from './pages/Preview';
 
 export default (isSigned = false) =>
   createAppContainer(
@@ -21,6 +22,7 @@ export default (isSigned = false) =>
             Enterprises,
             Filters,
             Welcome,
+            Preview,
             // Profile,
           }
           // {
