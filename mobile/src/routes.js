@@ -5,6 +5,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
 import Welcome from './pages/Welcome';
+import Filters from './pages/Filters';
 
 export default (isSigned = false) =>
   createAppContainer(
@@ -16,8 +17,8 @@ export default (isSigned = false) =>
         }),
         App: createSwitchNavigator(
           {
+            Filters,
             Welcome,
-            // Registration,
             // Profile,
           }
           // {
