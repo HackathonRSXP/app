@@ -3,6 +3,8 @@ import { StatusBar, View } from 'react-native';
 // import FlashMessage from 'react-native-flash-message';
 import './config/ReactotronConfig';
 
+console.tron.log('iniciando reactotron');
+
 import App from './App';
 
 export default function Index() {

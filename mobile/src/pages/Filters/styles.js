@@ -24,8 +24,9 @@ export const ProvidersList = styled.FlatList.attrs({
 `;
 
 export const Provider = styled(RectButton)`
-  background: ${props => (props.selected ? '#fff' : '#DDD')};
-  border-radius: 4px;
+  background: ${props =>
+    props.selected ? 'rgba(255, 255, 255, 0.4)' : '#fff'};
+  border-radius: 10px;
   padding: 20px;
   flex: 1;
   align-items: center;

@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
-
+import api from '../../services/api';
 import medicine from '../../assets/filters/medicine.png';
 import lawer from '../../assets/filters/lawer.png';
 import finance from '../../assets/filters/finance.png';
 import education from '../../assets/filters/education.png';
 import architeture from '../../assets/filters/architeture.png';
 import it from '../../assets/filters/it.png';
+
+const images = [finance, lawer, education, medicine, it, architeture];
 
 import {
   Container,
@@ -24,41 +26,34 @@ import {
 
 export default function Filters({ navigation }) {
   const [categories, setCategories] = useState([]);
+  const [categoriesSelected, setCategoriesSelected] = useState([]);
+
+  console.tron.log('imagem', images);
 
   useEffect(() => {
-    // async function loadProviders() {
-    //   const response = await api.get('providers');
-    //   setProviders(response.data);
-    // }
-    // loadProviders();
-
-    setCategories([
-      {
-        image: medicine,
-        title: 'Medicina',
-      },
-      {
-        image: lawer,
-        title: 'Adivogado',
-      },
-      {
-        image: education,
-        title: 'Educação',
-      },
-      {
-        image: finance,
-        title: 'Finanças',
-      },
-      {
-        image: it,
-        title: 'Tecnologia',
-      },
-      {
-        image: architeture,
-        title: 'Arquitetura',
-      },
-    ]);
+    async function loadCategories() {
+      const response = await api.get('filters');
+      setCategories(response.data);
+    }
+    loadCategories();
   }, []);
+
+  function handleSelectFilter(category) {
+    const checkExists = categoriesSelected.find(
+      cat => cat.category === category.category
+    );
+    console.tron.log(checkExists);
+    if (checkExists) {
+      setCategoriesSelected([
+        ...categoriesSelected.filter(cat => cat.category !== category.category),
+      ]);
+      console.tron.log(
+        categoriesSelected.filter(cat => cat.category !== category.category)
+      );
+    } else {
+      setCategoriesSelected([...categoriesSelected, category]);
+    }
+  }
 
   return (
     <Background>
@@ -69,26 +64,33 @@ export default function Filters({ navigation }) {
 
         <ProvidersList
           data={categories}
-          keyExtractor={provider => String(provider.id)}
-          renderItem={({ item: provider }) => (
+          keyExtractor={category => String(category.id)}
+          renderItem={({ item: category }) => (
             <Provider
-              onPress={() =>
-                navigation.navigate('SelectDateTime', { provider })
-              }
+              selected={categoriesSelected.some(
+                cat => cat.category === category.category
+              )}
+              onPress={() => handleSelectFilter(category)}
             >
               <Avatar
                 source={
-                  provider.image
-                    ? provider.image
-                    : `https://api.adorable.io/avatar/50/${provider.title}.png`
+                  category.id
+                    ? images[category.id]
+                    : `https://api.adorable.io/avatar/50/${category.category}.png`
                 }
               />
-              <Name>{provider.title}</Name>
+              <Name>{category.category}</Name>
             </Provider>
           )}
         />
 
-        <SubmitButton onPress={() => {}}>Já escolhi!</SubmitButton>
+        <SubmitButton
+          onPress={() =>
+            navigation.navigate('Preview', { category: categoriesSelected })
+          }
+        >
+          Já escolhi!
+        </SubmitButton>
       </Container>
     </Background>
   );
